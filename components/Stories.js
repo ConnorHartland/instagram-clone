@@ -1,24 +1,26 @@
 import faker, { fake } from "faker";
 import { useEffect, useState } from "react";
 import Story from "./Story";
+import axios from "axios";
 
 function Stories() {
+  var peopleCount = 20;
   const [suggestions, setSuggestions] = useState([]);
   useEffect(() => {
-    const suggestions = [...Array(20)].map((_, i) => ({
-      ...faker.helpers.contextualCard(),
-      id: i,
-    }));
-    setSuggestions(suggestions);
+    axios
+      .get(`https://randomuser.me/api/?results=${peopleCount}`)
+      .then((res) => {
+        setSuggestions(res.data.results);
+      });
   }, []);
 
   return (
-    <div>
-      {suggestions.map((profile) => (
+    <div className="flex space-x-2 p-6 bg-white mt-8  border-gray-200 border rounded-sm overflow-x-scroll scrollbar-thin scrollbar-thumb-black">
+      {suggestions.map((profile, key) => (
         <Story
-          key={profile.id}
-          image={profile.avatar}
-          username={profile.username}
+          key={key}
+          image={profile.picture["large"]}
+          username={profile.name["first"] + " " + profile.name["last"]}
         />
       ))}
       {/* Story  */}
