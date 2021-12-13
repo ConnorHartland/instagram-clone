@@ -26,4 +26,8 @@ export default NextAuth({
       return session;
     },
   },
+
+  secureCookie:
+    process.env.NEXTAUTH_URL?.startsWith("https://") ??
+    !!process.env.VERCEL_URL,
 });
