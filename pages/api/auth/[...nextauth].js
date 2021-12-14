@@ -12,7 +12,7 @@ export default NextAuth({
   ],
 
   pages: {
-    signIn: "/auth/signin",
+    signIn: "/signin",
   },
 
   callbacks: {
@@ -26,5 +26,5 @@ export default NextAuth({
       return session;
     },
   },
-  
+
 });
