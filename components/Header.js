@@ -2,48 +2,49 @@ import Image from "next/image";
 import {
   SearchIcon,
   PlusCircleIcon,
-  MenuIcon,
-  PaperAirplaneIcon,
   UserGroupIcon,
   HeartIcon,
+  PaperAirplaneIcon,
+  MenuIcon,
 } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
+import { useRecoilState } from "recoil";
 
 function Header() {
-  const { data: session } = useSession();
-  const router = useRouter();
+  const { data: session, status } = useSession();
   const [open, setOpen] = useRecoilState(modalState);
-
-  console.log(session);
+  const router = useRouter();
 
   return (
-    <div className="shadow-sm border-b bg-white sticky top-0 z-50">
-      <div className="flex justify-between bg-white max-w-6xl mx-5 lg:mx-auto">
+    <header className="shadow-sm border-b bg-white sticky top-0 z-50">
+      <div className="flex justify-between p-2 max-w-6xl mx-5 xl:mx-auto">
         <div
+          className="hidden relative w-24 lg:inline-grid cursor-pointer"
           onClick={() => router.push("/")}
-          className="relative hidden lg:inline-grid w-24 cursor-pointer"
         >
           <Image
             src="https://links.papareact.com/ocw"
+            alt="Picture of the author"
             layout="fill"
             objectFit="contain"
           />
         </div>
 
         <div
+          className="relative w-10 flex-shrink-0 lg:hidden cursor-pointer"
           onClick={() => router.push("/")}
-          className="relative w-10 lg:hidden flex-shrink-0 cursor-pointer"
         >
           <Image
             src="https://links.papareact.com/jjm"
+            alt="Picture of the author"
             layout="fill"
             objectFit="contain"
           />
         </div>
+
         <div className="max-w-xs">
           <div className="mt-1 p-3 relative rounded-md">
             <div className="absolute inset-y-0 pl-3 flex items-center pointer-events-none">
@@ -60,32 +61,31 @@ function Header() {
           </div>
         </div>
 
-        <div
-          onClick={() => router.push("/")}
-          className="flex items-center justify-end space-x-4"
-        >
-          <HomeIcon className="navBtn" />
+        <div className="flex items-center justify-end space-x-4">
+          <HomeIcon className="navBtn" onClick={() => router.push("/")} />
+
           <MenuIcon className="h-6 md:hidden cursor-pointer" />
 
           {session ? (
             <>
               <div className="relative navBtn">
-                <PaperAirplaneIcon className="navBtn rotate-45" />
-                <div className="absolute -top-1 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-white">
+                <PaperAirplaneIcon className="navBtn" />
+                <div className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white animate-pulse">
                   3
                 </div>
               </div>
               <PlusCircleIcon
+                className="h-6 cursor-pointer"
                 onClick={() => setOpen(true)}
-                className="navBtn"
               />
+
               <UserGroupIcon className="navBtn" />
               <HeartIcon className="navBtn" />
-
               <img
                 onClick={signOut}
-                src={session?.user?.image}
-                className="h-10 w-10 rounded-full cursor-pointer shadow-lg"
+                className="cursor-pointer rounded-full h-10"
+                src={session.user.image}
+                alt=""
               />
             </>
           ) : (
@@ -93,7 +93,7 @@ function Header() {
           )}
         </div>
       </div>
-    </div>
+    </header>
   );
 }
 

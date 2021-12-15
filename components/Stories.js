@@ -25,7 +25,7 @@ function Stories() {
         <Story
           key={key}
           image={profile.picture["large"]}
-          username={profile.name["first"] + " " + profile.name["last"]}
+          username={profile.name["first"] + "." + profile.name["last"]}
         />
       ))}
     </div>
