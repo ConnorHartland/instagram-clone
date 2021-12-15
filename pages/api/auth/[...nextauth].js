@@ -12,7 +12,7 @@ export default NextAuth({
   ],
   // If you want to have a custom page... include this..
   pages: {
-    signIn: "/auth/signin",
+    signIn: "/signin",
   },
   // If you dont have custom page... style with this...
   // theme: {
