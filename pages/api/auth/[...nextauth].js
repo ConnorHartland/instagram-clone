@@ -12,7 +12,7 @@ export default NextAuth({
   ],
   // If you want to have a custom page... include this..
   pages: {
-    signIn: "/signin",
+    signIn: "/auth/signin",
   },
   // If you dont have custom page... style with this...
   // theme: {
@@ -31,3 +31,9 @@ export default NextAuth({
     },
   },
 });
+
+// OAuth Creds Screen, click Edit App
+// https://console.cloud.google.com/apis/credentials/consent?authuser=1&project=insta-2-24a39
+
+// Credentials Screen, click edit oauth 2.0 client
+// https://console.cloud.google.com/apis/credentials?authuser=1&project=insta-2-24a39

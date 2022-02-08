@@ -3,17 +3,17 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDlfCA-fVw2ylPN9xuSCsk1anEkI72iKl0",
-  authDomain: "insta-clone-c6907.firebaseapp.com",
-  projectId: "insta-clone-c6907",
-  storageBucket: "insta-clone-c6907.appspot.com",
-  messagingSenderId: "211953942098",
-  appId: "1:211953942098:web:e28d8af323a79ba560298b",
-  measurementId: "G-LXCDPJPBRS",
+  apiKey: "AIzaSyAfIKXQr0TCVsXTglYEFBkePFeKQOQjT64",
+  authDomain: "insta-2-24a39.firebaseapp.com",
+  projectId: "insta-2-24a39",
+  storageBucket: "insta-2-24a39.appspot.com",
+  messagingSenderId: "1094841440758",
+  appId: "1:1094841440758:web:c01750a7adf69e20210fd7",
 };
 
 // Initialize Firebase
