@@ -14,8 +14,12 @@ import { modalState } from "../atoms/modalAtom";
 import { useRecoilState } from "recoil";
 
 function Header() {
+
+  // Getting Data from current Auth Sessions
   const { data: session, status } = useSession();
+  // Using Recoil in place of Redux
   const [open, setOpen] = useRecoilState(modalState);
+  // Router for pagination
   const router = useRouter();
 
   return (
@@ -25,6 +29,7 @@ function Header() {
           className="hidden relative w-24 lg:inline-grid cursor-pointer"
           onClick={() => router.push("/")}
         >
+          {/* TOP BORDER IMAGE */}
           <Image
             src="https://links.papareact.com/ocw"
             alt="Picture of the author"
@@ -44,7 +49,7 @@ function Header() {
             objectFit="contain"
           />
         </div>
-
+{/* Navbar Search Icon */}
         <div className="max-w-xs">
           <div className="mt-1 p-3 relative rounded-md">
             <div className="absolute inset-y-0 pl-3 flex items-center pointer-events-none">
@@ -60,7 +65,7 @@ function Header() {
             />
           </div>
         </div>
-
+        {/*  */}
         <div className="flex items-center justify-end space-x-4">
           <HomeIcon className="navBtn" onClick={() => router.push("/")} />
 

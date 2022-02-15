@@ -32,6 +32,7 @@ function Post({ id, username, userImg, img, caption }) {
 
   const { data: session } = useSession();
 
+  // Posting Comments
   useEffect(
     () =>
       onSnapshot(
@@ -44,6 +45,7 @@ function Post({ id, username, userImg, img, caption }) {
     [db]
   );
 
+  // Adding Like Functionality
   useEffect(
     () =>
       onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
@@ -52,12 +54,14 @@ function Post({ id, username, userImg, img, caption }) {
     []
   );
 
+  // Showing Like Count
   useEffect(() => {
     setHasLiked(
       likes.findIndex((like) => like.id === session?.user?.uid) !== -1
     );
   }, [likes]);
 
+  // Adding Comment Functionality
   const sendComment = async (e) => {
     e.preventDefault();
 
@@ -71,6 +75,7 @@ function Post({ id, username, userImg, img, caption }) {
       timestamp: serverTimestamp(),
     });
   };
+  
 
   const likePost = async () => {
     if (hasLiked) {
@@ -82,6 +87,7 @@ function Post({ id, username, userImg, img, caption }) {
     }
   };
 
+  // VIEW
   return (
     <div className="bg-white my-7 border rounded-sm">
       {/* Header */}

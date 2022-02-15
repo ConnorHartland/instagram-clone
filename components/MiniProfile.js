@@ -1,7 +1,10 @@
 import { signOut, useSession } from "next-auth/react";
 
 function MiniProfile() {
+  // Getting Data From Session
   const { data: session } = useSession();
+
+  // Styling Mini Profile on Side of page
   return (
     <div className="flex items-center justify-between mt-14 ml-10">
       <img

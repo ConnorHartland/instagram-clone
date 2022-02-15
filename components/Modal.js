@@ -13,7 +13,7 @@ import {
 import { db, storage } from "../firebase";
 import { useSession } from "next-auth/react";
 import { ref, getDownloadURL, uploadString } from "@firebase/storage";
-
+// Modal is the popup when posting a photo
 function Modal() {
   const { data: session } = useSession();
   const [open, setOpen] = useRecoilState(modalState);
@@ -22,6 +22,7 @@ function Modal() {
   const captionRef = useRef(null);
   const filePickerRef = useRef(null);
 
+  // Checking if user is uploading -> Upload
   const uploadPost = async () => {
     if (loading) return;
 
